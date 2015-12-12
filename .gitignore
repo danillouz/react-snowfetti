@@ -1,0 +1,16 @@
+# Logs
+logs
+*.log
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+node_modules
+
+# Build directory that contains the transpiled (ES5) source code
+lib
+
+# Misc
+.DS_Store

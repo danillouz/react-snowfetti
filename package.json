@@ -1,0 +1,38 @@
+{
+  "name": "react-snowfetti",
+  "version": "0.0.1",
+  "description": "Generates random particles using html5 canvas API.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danillouz/react-snowfetti.git"
+  },
+  "keywords": [
+    "react",
+    "canvas",
+    "particles",
+    "snow",
+	"confetti"
+  ],
+  "author": "Daniel Illouz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danillouz/react-snowfetti/issues"
+  },
+  "homepage": "https://github.com/danillouz/react-snowfetti#readme",
+  "devDependencies": {
+    "babel-cli": "^6.3.17",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "eslint": "^1.10.3"
+  },
+  "peerDependencies": {
+	"react": "^0.14.3"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --color src/**/*.js",
+    "prepublish": "babel src --out-dir lib --source-maps"
+  }
+}
