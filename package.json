@@ -11,7 +11,7 @@
     "canvas",
     "particles",
     "snow",
-	"confetti"
+    "confetti"
   ],
   "author": "Daniel Illouz",
   "license": "MIT",
@@ -27,12 +27,15 @@
     "eslint": "^1.10.3"
   },
   "peerDependencies": {
-	"react": "^0.14.3"
+    "react": "^0.14.3"
   },
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --color src/**/*.js",
     "prepublish": "babel src --out-dir lib --source-maps"
+  },
+  "dependencies": {
+    "random-hex": "^1.0.2"
   }
 }

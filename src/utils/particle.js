@@ -1,27 +1,32 @@
-function _createParticle({ width, height }) {
+import { getProfileValues } from '../utils/visuals';
+
+function _createParticle(profile, bounds) {
 	const { random } = Math;
+	const profileValues = getProfileValues(profile);
+	const { deltaX, deltaY, radius, color, opacity } = profileValues;
+	const { width, height } = bounds;
 
 	return {
 		init () {
-			let radius = 0.5 + random() * 2;
-
 			this.x = random() * width;
 			this.y = random() * -height;
-			this.deltaY = 1 + random() * radius;
-			this.deltaX = 0.25 - random();
+			this.deltaX = deltaX;
+			this.deltaY = deltaY;
 			this.radius = radius;
-			this.opacity = 0.5 + random() * 0.5;
+			this.color = color;
+			this.opacity = opacity;
 
 			return this;
 		}
 	};
 };
 
-export function generateParticles(amount, { width, height }) {
+export function generateParticles(profile, amount, bounds) {
 	const particles = [];
 
 	while (amount--) {
-		let particle = _createParticle({ width, height });
+		let particle = _createParticle(profile, bounds);
+
 		particle.init();
 		particles.push(particle);
 	}
@@ -29,13 +34,14 @@ export function generateParticles(amount, { width, height }) {
 	return particles;
 };
 
-export function updateParticles(ctx, bounds, particles, fillColor) {
+export function updateParticles(ctx, bounds, particles) {
 	const { width, height } = bounds;
 
 	// Clear the canvas context before updating and animating the particles.
 	ctx.clearRect(0, 0, width, height);
+
 	particles.forEach(particle => {
-		const { deltaX, deltaY, radius, opacity } = particle;
+		const { deltaX, deltaY, radius, color, opacity } = particle;
 
 		/**
 		 * Note that angles are measured in radians:
@@ -51,7 +57,7 @@ export function updateParticles(ctx, bounds, particles, fillColor) {
 		particle.y += deltaY;
 
 		// Style the particles.
-		ctx.fillStyle = fillColor;
+		ctx.fillStyle = color;
 		ctx.globalAlpha = opacity;
 
 		// Animate the particles.

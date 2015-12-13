@@ -1,12 +1,11 @@
 import React from 'react';
 import { generateParticles, updateParticles } from '../utils/particle';
-import { generateParticleFillColor } from '../utils/visuals';
 
 const WIDTH = 600;
 const HEIGHT = 300;
-const MAX_PARTICLES = 400;
-const PARTICLE_TYPE = 'snow';
-const CANVAS_STYLES = {
+const PROFILE = [ 'snow', 'steady' ];
+const AMOUNT = 800;
+const STYLES = {
 	backgroundColor: '#0A2933',
 	position: 'absolute',
 	top: '0',
@@ -26,11 +25,9 @@ export default React.createClass({
 		const {
 			width = WIDTH,
 			height = HEIGHT,
-			type = PARTICLE_TYPE
 		} = this.props;
-		const fillColor = generateParticleFillColor(type);
 
-		updateParticles(ctx, { width, height }, particles, fillColor);
+		updateParticles(ctx, { width, height }, particles);
 		this.animate(particles);
 	},
 
@@ -38,9 +35,11 @@ export default React.createClass({
 		const {
 			width = WIDTH,
 			height = HEIGHT,
-			maxParticles = MAX_PARTICLES
+			profile = PROFILE,
+			amount = AMOUNT
 		} = this.props;
-		const particles = generateParticles(maxParticles, { width, height });
+
+		const particles = generateParticles(profile, amount, { width, height });
 
 		this.animate(particles);
 	},
@@ -49,7 +48,7 @@ export default React.createClass({
 		const {
 			width = WIDTH,
 			height = HEIGHT,
-			styles = CANVAS_STYLES
+			styles = STYLES
 		} = this.props;
 
 		return (
