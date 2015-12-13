@@ -14,12 +14,28 @@ const STYLES = {
 
 export default React.createClass({
 
+	/**
+	 * Canvas context.
+	 *
+	 * @type {object}
+	 */
 	ctx: null,
 
+	/**
+	 * Animate by drawing all particles.
+	 *
+	 * @param  {array} particles - particle Objects to be rendered
+	 */
 	animate (particles) {
 		window.requestAnimationFrame(this.draw.bind(this, particles));
 	},
 
+	/**
+	 * Draws particles on the canvas by continiously updating the
+	 * particle values.
+	 *
+	 * @param  {array} particles - particle Objects to be rendered
+	 */
 	draw (particles) {
 		const { ctx } = this;
 		const {

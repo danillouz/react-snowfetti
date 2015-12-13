@@ -1,5 +1,13 @@
 import randomHex from 'random-hex';
 
+/**
+ * Retrieves particle values based on the specified particle
+ * profile.
+ *
+ * @param  {array}  profile - contains the particle type and velocity
+ *
+ * @return {object} particle Object values
+ */
 export function getProfileValues([ type, velocity ]) {
 	const { random } = Math;
 	let radii = {};
@@ -61,4 +69,4 @@ export function getProfileValues([ type, velocity ]) {
 	}
 
 	return values;
-};
+}

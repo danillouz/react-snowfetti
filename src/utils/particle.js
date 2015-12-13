@@ -1,5 +1,15 @@
 import { getProfileValues } from '../utils/visuals';
 
+/**
+ * Create a single particle Object.
+ *
+ * @private
+ *
+ * @param  {array}  profile - particle profile that contains type and velocity
+ * @param  {object} bounds  - canvas width and height
+ *
+ * @return {object} particle Object
+ */
 function _createParticle(profile, bounds) {
 	const { random } = Math;
 	const profileValues = getProfileValues(profile);
@@ -7,7 +17,7 @@ function _createParticle(profile, bounds) {
 	const { width, height } = bounds;
 
 	return {
-		init () {
+		init() {
 			this.x = random() * width;
 			this.y = random() * -height;
 			this.deltaX = deltaX;
@@ -19,8 +29,18 @@ function _createParticle(profile, bounds) {
 			return this;
 		}
 	};
-};
+}
 
+/**
+ * Generates a specific amount of particles to be rendered
+ * on the canvas based on the specified particle profile.
+ *
+ * @param  {array}  profile - particle profile that contains type and velocity
+ * @param  {number} amount  - the amount of particles to be rendered
+ * @param  {object} bounds  - canvas width and height
+ *
+ * @return {array} particle Objects to be rendered
+ */
 export function generateParticles(profile, amount, bounds) {
 	const particles = [];
 
@@ -32,8 +52,16 @@ export function generateParticles(profile, amount, bounds) {
 	}
 
 	return particles;
-};
+}
 
+/**
+ * Updates the particle values before (re) drawing to create
+ * an animation on the canvas.
+ *
+ * @param  {object} ctx       - canvas context
+ * @param  {object} bounds    - canvas width and height
+ * @param  {array} particles  - particle Objects to be rendered
+ */
 export function updateParticles(ctx, bounds, particles) {
 	const { width, height } = bounds;
 
@@ -71,4 +99,4 @@ export function updateParticles(ctx, bounds, particles) {
 			particle.init();
 		}
 	});
-};
+}
