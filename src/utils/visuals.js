@@ -27,13 +27,14 @@ export function getProfileValues([ type, velocity ]) {
 		}
 
 		case 'confetti': {
-			let radius = 0.8 + random() * 3;
+			let radius = 0.2 + random() * 4;
 
 			radii[type] = radius;
 
 			values.radius = radius;
 			values.color = randomHex.generate();
-			values.opacity = 0.5 + random() * 0.5;
+			values.opacity = 1;
+			values.deltaOpacity = 0.05 * random();
 
 			break;
 		}
@@ -44,7 +45,7 @@ export function getProfileValues([ type, velocity ]) {
 			let radius = radii[type];
 
 			values.deltaX = 0.25 - random();
-			values.deltaY = 0.5 + random() * radius;
+			values.deltaY = 0.15 + random() * radius;
 
 			break;
 		}

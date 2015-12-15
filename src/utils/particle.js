@@ -13,7 +13,7 @@ import { getProfileValues } from '../utils/visuals';
 function _createParticle(profile, bounds) {
 	const { random } = Math;
 	const profileValues = getProfileValues(profile);
-	const { deltaX, deltaY, radius, color, opacity } = profileValues;
+	const { deltaX, deltaY, deltaOpacity, radius, color, opacity } = profileValues;
 	const { width, height } = bounds;
 
 	return {
@@ -22,6 +22,7 @@ function _createParticle(profile, bounds) {
 			this.y = random() * -height;
 			this.deltaX = deltaX;
 			this.deltaY = deltaY;
+			this.deltaOpacity = deltaOpacity;
 			this.radius = radius;
 			this.color = color;
 			this.opacity = opacity;
@@ -62,14 +63,14 @@ export function generateParticles(profile, amount, bounds) {
  * @param  {object} bounds    - canvas width and height
  * @param  {array} particles  - particle Objects to be rendered
  */
-export function updateParticles(ctx, bounds, particles) {
+export function updateParticles(ctx, type, bounds, particles) {
 	const { width, height } = bounds;
 
 	// Clear the canvas context before updating and animating the particles.
 	ctx.clearRect(0, 0, width, height);
 
 	particles.forEach(particle => {
-		const { deltaX, deltaY, radius, color, opacity } = particle;
+		const { deltaX, deltaY, deltaOpacity, opacity, radius, color } = particle;
 
 		/**
 		 * Note that angles are measured in radians:
@@ -84,9 +85,21 @@ export function updateParticles(ctx, bounds, particles) {
 		particle.x += deltaX;
 		particle.y += deltaY;
 
+		if (type === 'snow' && particle.opacity <= 0) {
+			particle.opacity = opacity;
+		}
+
+		if (type === 'confetti' && particle.opacity <= 0) {
+			particle.opacity += deltaOpacity;
+		}
+
+		if (type === 'confetti' && particle.opacity > 0) {
+			particle.opacity -= deltaOpacity;
+		}
+
 		// Style the particles.
 		ctx.fillStyle = color;
-		ctx.globalAlpha = opacity;
+		ctx.globalAlpha = particle.opacity;
 
 		// Animate the particles.
 		ctx.beginPath();
