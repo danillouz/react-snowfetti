@@ -13,8 +13,16 @@ Inspired by this [codepen](https://codepen.io/linrock/pen/Amdhr).
 
 # interface
 ```javascript
+const palette = [
+	'#55476a',
+	'#ae3d63',
+	'#db3853',
+	'#f45c44',
+	'#f8b646'
+];
+
 <Snowfetti
-	profile={ [ 'confetti', 'steady' ] }
+	profile={ [ 'confetti', 'steady', palette ] }
 	amount={ 800 }
 	width={ 600 }
 	height={ 300 }
@@ -25,7 +33,7 @@ Inspired by this [codepen](https://codepen.io/linrock/pen/Amdhr).
 ## properties
 #### profile (Array)
 Denotes the visual profile of the rendered particles on the canvas.
-The profile accepts two values:
+The profile accepts three values:
 
 - type (String):
 	+ `'snow'`
@@ -34,6 +42,8 @@ The profile accepts two values:
 	+ `'slow'`
 	+ `'steady'`
 	+ `'fast'`
+- palette (Array):
+	contains hex color strings
 
 *Defaults to type `'snow'` and velocity `'slow'`.*
 
@@ -84,8 +94,8 @@ export React.createClass({
 
 # todos
 - [ ] write tests
-- [ ] add support for confetti color sets
-- [ ] fade out particles
+- [x] add support for confetti color sets
+- [x] fade out particles
 - [ ] make particle flow direction be affected by mouse cursor
 - [ ] add code coverage
 - [ ] add CI
