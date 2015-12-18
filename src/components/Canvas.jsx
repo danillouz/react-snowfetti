@@ -143,6 +143,8 @@ export default React.createClass({
 		const { width = WIDTH } = this.props;
 
 		this.dynamicX = event.pageX / width;
+
+		console.log(this.dynamicX);
 	},
 
 	render () {
