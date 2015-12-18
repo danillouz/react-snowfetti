@@ -22,6 +22,14 @@ export default React.createClass({
 	ctx: null,
 
 	/**
+	 * Dynamic particle x coordinate value determined by the mouse
+	 * cursor position.
+	 *
+	 * @type {number}
+	 */
+	dynamicX: 1,
+
+	/**
 	 * Draws particles on the canvas by continiously updating the
 	 * particle values.
 	 *
@@ -37,7 +45,7 @@ export default React.createClass({
 		const startAngle = 0;
 		const endAngle = 2 * Math.PI; // 360 degrees in radians
 		const antiClockwise = true;
-		const { ctx } = this;
+		const { ctx, dynamicX } = this;
 		const {
 			width = WIDTH,
 			height = HEIGHT,
@@ -125,6 +133,18 @@ export default React.createClass({
 		this.animate(particles);
 	},
 
+	/**
+	 * Calculates the dynamic particle x coordinate based on
+	 * the mouse cursor position.
+	 *
+	 * @param  {object} event - the event Object
+	 */
+	handleMouseMove (event) {
+		const { width = WIDTH } = this.props;
+
+		this.dynamicX = event.pageX / width;
+	},
+
 	render () {
 		const {
 			width = WIDTH,
@@ -139,6 +159,7 @@ export default React.createClass({
 				height={ height }
 				style={ styles }
 				ref={ canvas => this.ctx = canvas.getContext('2d') }
+				onMouseMove={ this.handleMouseMove }
 			>
 				<h3>
 					Oh no! You do not have support for the html5 canvas API!
