@@ -95,8 +95,8 @@ export React.createClass({
 # todos
 - [ ] write tests
 - [x] add support for confetti color sets
-- [x] fade out particles
-- [ ] make particle flow direction be affected by mouse cursor
+- [x] fade out confetti particles
+- [x] make particle flow direction be affected by mouse cursor
 - [ ] add code coverage
 - [ ] add CI
 - [ ] add README.md badges

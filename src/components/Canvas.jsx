@@ -1,6 +1,8 @@
 import React from 'react';
 import { generateParticles, updateParticles } from '../utils/particle';
 
+const PropTypes = React.PropTypes;
+
 const PROFILE = [ 'snow', 'steady' ];
 const AMOUNT = 800;
 const WIDTH = 600;
@@ -14,18 +16,30 @@ const STYLES = {
 
 export default React.createClass({
 
+	propTypes: {
+		width: PropTypes.number,
+		height: PropTypes.number,
+		style: PropTypes.object,
+		amount: PropTypes.number,
+		profile: PropTypes.array
+	},
+
 	/**
 	 * Canvas context.
 	 *
 	 * @type {object}
+	 *
+	 * @see `render()`
 	 */
 	ctx: null,
 
 	/**
-	 * Dynamic particle x coordinate value determined by the mouse
+	 * Dynamic particle x coordinate value, determined by the mouse
 	 * cursor position.
 	 *
 	 * @type {number}
+	 *
+	 * @see `handleMouseMove()`
 	 */
 	dynamicX: 1,
 
@@ -68,7 +82,7 @@ export default React.createClass({
 			} = particle;
 
 			// Update particle values before animating.
-			particle.x += deltaX;
+			particle.x += deltaX + 1.33 * dynamicX;
 			particle.y += deltaY;
 
 			// Update particle opacity based on particle type.
@@ -120,6 +134,18 @@ export default React.createClass({
 		window.requestAnimationFrame( this.draw.bind(this, particles) );
 	},
 
+	/**
+	 * Calculates the dynamic particle x coordinate based on
+	 * the mouse cursor position.
+	 *
+	 * @param  {object} event - the event Object
+	 */
+	handleMouseMove (event) {
+		const { width = WIDTH } = this.props;
+
+		this.dynamicX = event.pageX / width;
+	},
+
 	componentDidMount () {
 		const {
 			profile = PROFILE,
@@ -131,20 +157,6 @@ export default React.createClass({
 		const particles = generateParticles(profile, amount, { width, height });
 
 		this.animate(particles);
-	},
-
-	/**
-	 * Calculates the dynamic particle x coordinate based on
-	 * the mouse cursor position.
-	 *
-	 * @param  {object} event - the event Object
-	 */
-	handleMouseMove (event) {
-		const { width = WIDTH } = this.props;
-
-		this.dynamicX = event.pageX / width;
-
-		console.log(this.dynamicX);
 	},
 
 	render () {
