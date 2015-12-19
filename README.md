@@ -21,17 +21,21 @@ const palette = [
 	'#f8b646'
 ];
 
+const snowfettiStyles = {
+	backgroundColor: '#0a2933'
+};
+
 <Snowfetti
 	profile={ [ 'confetti', 'steady', palette ] }
 	amount={ 800 }
 	width={ 600 }
 	height={ 300 }
-	styles={ {backgroundColor: '#0a2933'} }
+	styles={ snowfettiStyles }
 />
 ```
 
 ## properties
-#### profile (Array)
+#### profile **(Array)** - *optional*
 Denotes the visual profile of the rendered particles on the canvas.
 The profile accepts three values:
 
@@ -47,26 +51,26 @@ The profile accepts three values:
 
 *Defaults to type `'snow'` and velocity `'slow'`.*
 
-#### amount (Number)
+#### amount **(Number)** - *optional*
 Denotes the amount of particles that will be rendered on the canvas.
 
 *Defaults to `800` particles.*
 
-#### width (Number)
+#### width **(Number)** - *optional*
 Denotes the canvas width.
 
 *Defaults to `600`.*
 
-#### height (Number)
+#### height **(Number)** - *optional*
 Denotes the canvas height.
 
 *Defaults to `300`.*
 
-#### styles (Object)
+#### styles **(Object)** - *optional*
 Denotes the canvas css styles.
 
-*Defaults to `backgroundColor` of `#0a2933`, `position` `absolute`
-with `top` `0` and `left` `0`.*
+*Defaults to `backgroundColor: '#0a2933'`, `position: 'absolute'`
+with `top: 0` and `left: 0`.*
 
 # peer dependencies
 `react-snowfetti` has a dependency on [react](https://facebook.github.io/react/) version `^0.14.3`.
@@ -75,9 +79,9 @@ This dependency must be fulfilled by the consumer of
 `react-snowfetti`.
 
 # usage
-First install the package in your project using [npm](https://www.npmjs.com/):
+First install the package together with [react](https://facebook.github.io/react/) in your project using [npm](https://www.npmjs.com/):
 ```bash
-npm i -S react-snowfetti
+npm i -S react-snowfetti react
 ```
 
 Then import the package in your consumer application:
@@ -94,9 +98,9 @@ export React.createClass({
 
 # todos
 - [ ] write tests
+- [ ] add code coverage
+- [ ] add CI
 - [x] add support for confetti color sets
 - [x] fade out confetti particles
 - [x] make particle flow direction be affected by mouse cursor
-- [ ] add code coverage
-- [ ] add CI
 - [ ] add README.md badges
