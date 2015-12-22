@@ -1,4 +1,12 @@
 # react-snowfetti
+[![NPM Version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+
+[npm-image]: https://img.shields.io/badge/npm-v1.2.2-blue.svg
+[npm-url]: https://www.npmjs.com/package/react-snowfetti
+[travis-image]: https://travis-ci.org/danillouz/react-snowfetti.svg?branch=master
+[travis-url]: https://travis-ci.org/danillouz/react-snowfetti
+
 Generates random particles using html5 [canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API).
 
 `react-snowfetti` exposes an interface to create snow for the holidays or confetti when you're celebrating!
@@ -99,8 +107,8 @@ export React.createClass({
 # todos
 - [ ] write tests
 - [ ] add code coverage
-- [ ] add CI
+- [x] add CI
 - [x] add support for confetti color sets
 - [x] fade out confetti particles
 - [x] make particle flow direction be affected by mouse cursor
-- [ ] add README.md badges
+- [x] add README.md badges
