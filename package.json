@@ -1,6 +1,6 @@
 {
   "name": "react-snowfetti",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Generates random particles using html5 canvas API.",
   "repository": {
     "type": "git",
