@@ -1,11 +1,14 @@
 # react-snowfetti
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
+[![Coverage Status][coverage-image]][coverage-url]
 
-[npm-image]: https://img.shields.io/badge/npm-v1.2.2-blue.svg
+[npm-image]: https://img.shields.io/badge/npm-v1.2.3-blue.svg
 [npm-url]: https://www.npmjs.com/package/react-snowfetti
 [travis-image]: https://travis-ci.org/danillouz/react-snowfetti.svg?branch=master
 [travis-url]: https://travis-ci.org/danillouz/react-snowfetti
+[coverage-image]: https://coveralls.io/repos/danillouz/react-snowfetti/badge.svg?branch=master&service=github
+[coverage-url]: https://coveralls.io/github/danillouz/react-snowfetti?branch=master
 
 Generates random particles using html5 [canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API).
 
@@ -106,7 +109,7 @@ export React.createClass({
 
 # todos
 - [ ] write tests
-- [ ] add code coverage
+- [x] add code coverage
 - [x] add CI
 - [x] add support for confetti color sets
 - [x] fade out confetti particles
