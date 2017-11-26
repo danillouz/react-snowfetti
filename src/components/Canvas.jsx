@@ -1,7 +1,8 @@
 import React from 'react';
 import { generateParticles, updateParticles } from '../utils/particle';
+import { PropTypes } from 'prop-types';
+import { createReactClass } from 'create-react-class';
 
-const PropTypes = React.PropTypes;
 
 const PROFILE = [ 'snow', 'steady' ];
 const AMOUNT = 800;
