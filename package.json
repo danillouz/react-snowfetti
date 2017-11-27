@@ -47,6 +47,10 @@
     "lint": "eslint --color src/**/*.js"
   },
   "dependencies": {
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-env": "^1.6.1",
+    "create-react-class": "^15.6.2",
+    "prop-types": "^15.6.0",
     "random-hex": "^1.0.2"
   }
 }
